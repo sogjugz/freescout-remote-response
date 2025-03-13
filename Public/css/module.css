@@ -1,0 +1,10 @@
+@keyframes rotateSpinner {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.rrbutton.disabled i {
+    animation: rotateSpinner 800ms linear infinite;
+}
+

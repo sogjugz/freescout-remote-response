@@ -1,0 +1,1 @@
+<li @if (Route::is('ss-remote-response.settings'))class="active"@endif><a href="{{ route('ss-remote-response.settings', ['mailbox_id'=>$mailbox->id]) }}"><i class="glyphicon glyphicon-globe"></i>Remote Response</a></li>

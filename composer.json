@@ -1,0 +1,29 @@
+{
+    "name": "freescout/ssremoteresponse",
+    "description": "",
+    "authors": [
+        {
+            "name": "FreeScout",
+            "email": "support@freescout.net"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\SsRemoteResponse\\Providers\\SsRemoteResponseServiceProvider"
+            ],
+            "aliases": {}
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\SsRemoteResponse\\": ""
+        }
+    },
+    "replace": {
+        "guzzlehttp/guzzle": "*",
+        "guzzlehttp/promises": "*",
+        "guzzlehttp/psr7": "*",
+        "psr/http-message": "*"
+    }
+}
