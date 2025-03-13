@@ -29,13 +29,13 @@ This repository contains a FreeScout module that allows processing responses via
 
 ```json
 {
-    "conversation_content": "Customer: \n Initial request: \n Agent: First response \n Customer: Customer response",
-    "customer_name": "John Doe",
-    "customer_email": "John.doe@domain.com",
-    "conversation_subject": "Test conversation"
+  "conversation_content": "Customer: \n Initial request: \n Agent: First response \n Customer: Customer response",
+  "customer_name": "John Doe",
+  "customer_email": "John.doe@domain.com",
+  "conversation_subject": "Test conversation"
 }
+```
 
 The conversation content includes all conversation threads in a readable text format.
 
 Your server must return a text response, which will be automatically injected into the reply editor.
-```
