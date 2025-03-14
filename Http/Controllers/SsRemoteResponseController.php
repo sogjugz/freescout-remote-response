@@ -5,6 +5,7 @@ namespace Modules\SsRemoteResponse\Http\Controllers;
 use App\Conversation;
 use App\Mailbox;
 use App\Thread;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
@@ -131,25 +132,29 @@ class SsRemoteResponseController extends Controller
 
     private function htmlToMarkdown($html)
     {
-        // Convertir enlaces <a href="url">texto</a> a [texto](url)
-        $html = preg_replace_callback(
-            '/<a\s+href="([^"]+)">([^<]+)<\/a>/i',
-            function($matches) {
-                return '[' . $matches[2] . '](' . $matches[1] . ')';
-            },
-            $html
-        );
-
-        // Convertir saltos de línea <br> a nueva línea
-        $html = preg_replace('/<br\s*\/?>/i', "\n", $html);
-
-        // Convertir párrafos <p> en nueva línea seguida de contenido
-        $html = preg_replace('/<p>(.*?)<\/p>/i', "\n$1\n", $html);
-
-        // Limpiar etiquetas HTML restantes (opcional)
-        $html = strip_tags($html);
-
-        // Eliminar espacios en blanco adicionales
-        return trim($html);
+        try {
+            // Convertir enlaces <a href="url">texto</a> a [texto](url)
+            $html = preg_replace_callback(
+                '/<a\s+href="([^"]+)">([^<]+)<\/a>/i',
+                function($matches) {
+                    return '[' . $matches[2] . '](' . $matches[1] . ')';
+                },
+                $html
+            );
+    
+            // Convertir saltos de línea <br> a nueva línea
+            $html = preg_replace('/<br\s*\/?>/i', "\n", $html);
+    
+            // Convertir párrafos <p> en nueva línea seguida de contenido
+            $html = preg_replace('/<p>(.*?)<\/p>/i', "\n$1\n", $html);
+    
+            // Limpiar etiquetas HTML restantes (opcional)
+            $html = strip_tags($html);
+    
+            // Eliminar espacios en blanco adicionales
+            return trim($html);
+        } catch (Exception $e) {
+            return strip_tags($html);
+        }
     }
 }

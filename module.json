@@ -4,6 +4,7 @@
     "description": "Module to process a response in a remote server.",
     "version": "1.0.0",
     "detailsUrl": "https://github.com/sogjugz/freescout-remote-response",
+    "img": "https://raw.githubusercontent.com/sogjugz/freescout-remote-response/refs/heads/main/RemoteLogo.png",
     "author": "SOGYO",
     "authorUrl": "https://www.sogyo.net",
     "requiredAppVersion": "1.8",
