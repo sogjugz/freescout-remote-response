@@ -26,6 +26,21 @@ function remoteResponseInit() {
     });
 }
 
+function getHTMLFromAnswer(response) {
+    const answer = response.answer?.trim();
+
+    if (answer.startsWith('<iframe')) {
+        const match = answer.match(/srcdoc="([^"]*)"/);
+        if (match && match[1]) {
+            const temp = document.createElement('textarea');
+            temp.innerHTML = match[1];
+            return temp.value;
+        }
+    }
+    
+    return answer;
+}
+
 async function injectAnswer() {
     const thread = $(".thread-type-customer:first");
     const thread_id = thread.attr("data-thread_id");
@@ -49,7 +64,7 @@ async function injectAnswer() {
         function (response) {
             $("#body").summernote(
                 "pasteHTML",
-                response.answer ||
+                getHTMLFromAnswer(response.answer) ||
                     "Empty response from remote response module. Check your remote server response."
             );
             $("#bt-send-remote-response").removeClass("hidden");
