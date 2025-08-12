@@ -64,7 +64,7 @@ async function injectAnswer() {
         function (response) {
             $("#body").summernote(
                 "pasteHTML",
-                getHTMLFromAnswer(response.answer) ||
+                getHTMLFromAnswer(response) ||
                     "Empty response from remote response module. Check your remote server response."
             );
             $("#bt-send-remote-response").removeClass("hidden");
